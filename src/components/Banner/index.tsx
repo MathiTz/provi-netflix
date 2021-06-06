@@ -4,7 +4,7 @@ import { api } from "../../service/api";
 import { baseImgUrl, endPoints } from "../../service/endpoints";
 import { truncate } from "../../utils";
 
-import "./styles.css";
+import { HeaderBanner } from "./styles";
 
 function Banner() {
 	const [movie, setMovie] = useState<Movie>({} as Movie);
@@ -21,32 +21,18 @@ function Banner() {
 	}, []);
 
 	return (
-		<header
-			style={{
-				backgroundSize: "cover",
-				backgroundImage: `url(
-			${baseImgUrl}${movie?.backdrop_path}
-		)`,
-				backgroundPosition: "center center",
-			}}
-			className="banner"
-		>
+		<HeaderBanner image={`${baseImgUrl}${movie?.backdrop_path}`}>
 			<section className="banner__contents">
-				<h1 className="banner__title">
-					{movie?.title || movie?.original_title}
-				</h1>
+				<h1 className="banner__title">{movie.name}</h1>
+				<p className="banner__description">{truncate(movie.overview, 150)}</p>
 				<div className="banner__buttons">
 					<button className="banner__button">Play</button>
 					<button className="banner__button">My List</button>
 				</div>
-
-				<h1 className="banner__description">
-					{truncate(movie?.overview, 150)}
-				</h1>
 			</section>
 
 			<div className="banner--fadeBottom"></div>
-		</header>
+		</HeaderBanner>
 	);
 }
 

@@ -10,7 +10,8 @@ function Home() {
 			<Banner />
 			{rowsNetflix.map((row) => (
 				<Row
-					key={Math.random()}
+					id={row.id}
+					key={row.id}
 					title={row.title}
 					fetchUrl={row.fetchUrl}
 					isLargeRow={row.isLargeRow}

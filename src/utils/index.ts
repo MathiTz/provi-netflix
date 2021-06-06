@@ -15,37 +15,49 @@ function truncate(str: string, n: number) {
 
 const rowsNetflix = [
 	{
+		id: 1,
 		title: "Netflix Originals",
 		fetchUrl: endPoints.fetchNetflixOriginals,
 		isLargeRow: true,
 	},
 	{
+		id: 2,
 		title: "Trending Now",
 		fetchUrl: endPoints.fetchTrending,
 		isLargeRow: false,
 	},
-	{ title: "Top Rated", fetchUrl: endPoints.fetchTopRated, isLargeRow: false },
 	{
+		id: 3,
+		title: "Top Rated",
+		fetchUrl: endPoints.fetchTopRated,
+		isLargeRow: false,
+	},
+	{
+		id: 4,
 		title: "Action Movies",
 		fetchUrl: endPoints.fetchActionMovies,
 		isLargeRow: false,
 	},
 	{
+		id: 5,
 		title: "Comedy Movies",
 		fetchUrl: endPoints.fetchComedyMovies,
 		isLargeRow: false,
 	},
 	{
+		id: 6,
 		title: "Horror Movies",
 		fetchUrl: endPoints.fetchHorrorMovies,
 		isLargeRow: false,
 	},
 	{
+		id: 7,
 		title: "Romance Movies",
 		fetchUrl: endPoints.fetchRomanceMovies,
 		isLargeRow: false,
 	},
 	{
+		id: 8,
 		title: "Documentaries",
 		fetchUrl: endPoints.fetchDocumentaries,
 		isLargeRow: false,
