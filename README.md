@@ -20,7 +20,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 # Functionalities
 
-1 - Login
-2 - Register
-3 - Trailer movies
-4 - Sign out
+### 1) Login
+### 2) Register
+### 3) Trailer movies
+### 4) Sign out
