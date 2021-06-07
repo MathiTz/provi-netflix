@@ -42,6 +42,19 @@ function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 		fetchDataMovies();
 	}, [fetchUrl]);
 
+	useEffect(() => {
+		switch (counterSlide) {
+			case 1:
+				setArrowVisible({ left: false, right: true });
+				return;
+			case 5:
+				setArrowVisible({ left: true, right: false });
+				return;
+			default:
+				setArrowVisible({ left: true, right: true });
+		}
+	}, [counterSlide]);
+
 	const handleSelectMovie = async (movie: Movie) => {
 		if (movieSelectedId === movie.id) {
 			return;
@@ -68,7 +81,9 @@ function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 
 			return;
 		} catch (e) {
-			return toastMessages.error(e.message);
+			return toastMessages.error(
+				"Something happen, sorry for the inconvenience"
+			);
 		}
 	};
 

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Navbar } from "../../components/Navbar";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { FadeBottom, FormInput, FormContainer, LoginContainer } from "./styles";
 import { useAuth } from "../../context";
 import { toastMessages } from "../../utils";
+import { Loader } from "../../components/Loading";
 
 interface IFormInput {
 	email: string;
@@ -14,26 +15,39 @@ interface IFormInput {
 
 function Login() {
 	const [isLoginVisible, setIsLoginVisible] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset,
+		watch,
 	} = useForm<IFormInput>();
+	const password = useRef({});
+	password.current = watch("password", "");
+
 	const { logIn, signUp } = useAuth();
 
 	const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+		setLoading(true);
+
 		if (isLoginVisible) {
 			try {
 				await logIn(data);
+				toastMessages.success("Login successfully!");
 			} catch (error) {
 				toastMessages.error(error.message);
+			} finally {
+				setLoading(false);
 			}
 		} else {
 			try {
 				await signUp(data);
+				toastMessages.success("Account created! Enjoy our movies :)");
 			} catch (error) {
 				toastMessages.error(error.message);
+			} finally {
+				setLoading(false);
 			}
 		}
 	};
@@ -72,7 +86,7 @@ function Login() {
 							<p className="errors__form">Senha é requerido</p>
 						)}
 
-						<button type="submit">Entrar</button>
+						<button type="submit">{loading ? <Loader /> : "Entrar"}</button>
 
 						<p
 							className="text__form--toggle"
@@ -97,22 +111,26 @@ function Login() {
 						<input
 							type="password"
 							placeholder="Senha"
-							{...register("password", { required: true })}
+							{...register("password", { required: true, minLength: 8 })}
 						/>
-						{errors.password?.type === "required" && (
-							<p className="errors__form">Senha é requerida</p>
+						{errors.password && (
+							<p className="errors__form">{errors.password.message}</p>
 						)}
 
 						<input
 							type="password"
 							placeholder="Confirmar Senha"
-							{...register("confirmPassword", { required: true })}
+							{...register("confirmPassword", {
+								required: true,
+								validate: (value) =>
+									value === password.current || "Senhas não conferem",
+							})}
 						/>
 						{errors.confirmPassword && (
 							<p className="errors__form">{errors.confirmPassword.message}</p>
 						)}
 
-						<button type="submit">Cadastrar</button>
+						<button type="submit">{loading ? <Loader /> : "Cadastrar"}</button>
 
 						<p
 							className="text__form--toggle"

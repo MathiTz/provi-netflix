@@ -4,7 +4,7 @@ import App from "./App";
 import firebase from "firebase/app";
 
 firebase.initializeApp({
-	apiKey: "AIzaSyCESi6Tx1Kuk1knE4qFJhIt25B0nj_8EzQ",
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 	authDomain: "provi-netflix-test.firebaseapp.com",
 	databaseURL: "https://provi-netflix-test-default-rtdb.firebaseio.com",
 	projectId: "provi-netflix-test",

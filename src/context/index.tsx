@@ -1,5 +1,4 @@
 import { createContext, useCallback, useContext, useState } from "react";
-import { api } from "../service/api";
 import firebase from "firebase";
 
 interface AuthProviderProps {
@@ -32,12 +31,9 @@ const AuthContext = createContext({} as AuthContextData);
 function AuthProvider({ children }: AuthProviderProps) {
 	const db = firebase.firestore();
 	const [data, setData] = useState<AuthState>(() => {
-		// const token = localStorage.getItem("@proviTest:token");
 		const user = localStorage.getItem("@proviTest:user");
 
 		if (user) {
-			// api.defaults.headers.authorization = `Bearer ${token}`;
-
 			return { user: JSON.parse(user) };
 		}
 
@@ -49,13 +45,17 @@ function AuthProvider({ children }: AuthProviderProps) {
 			const usersCollection = db.collection("users");
 			const hashedPassword = btoa(password);
 			const user = await usersCollection.where("email", "==", email).get();
-			const userId = user.docs[0].id;
 
+			if (user.empty) {
+				throw new Error("Email not register");
+			}
+
+			const userId = user.docs[0].id;
 			const { passwordHashed } = user.docs[0].data();
 			if (passwordHashed === hashedPassword) {
 				setData({ user: { email, id: userId } });
 			} else {
-				throw new Error("Email/Password incorret");
+				throw new Error("Email/Password incorrect");
 			}
 		},
 		[db]
@@ -69,7 +69,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 				.where("email", "==", email)
 				.get();
 
-			if (userExists.docs) {
+			if (!userExists.empty) {
 				throw new Error("User with same email already exists");
 			}
 
