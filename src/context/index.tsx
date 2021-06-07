@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState } from "react";
 import firebase from "firebase";
+import { toastMessages } from "../utils";
 
 interface AuthProviderProps {
 	children: React.ReactNode;
@@ -85,6 +86,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
 	const signOut = useCallback(() => {
 		localStorage.removeItem("@proviTest:user");
+		toastMessages.success("See you next time!");
 
 		setData({} as AuthState);
 	}, []);
