@@ -23,6 +23,7 @@ interface RowProps {
 
 function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 	const [movies, setMovies] = useState<Movie[]>([]);
+	const [movieSelectedId, setMovieSelectedId] = useState(0);
 	const [trailerUrl, setTrailerUrl] = useState("");
 	const [arrowVisible, setArrowVisible] = useState({
 		left: false,
@@ -42,6 +43,10 @@ function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 	}, [fetchUrl]);
 
 	const handleSelectMovie = async (movie: Movie) => {
+		if (movieSelectedId === movie.id) {
+			return;
+		}
+
 		try {
 			const endPoint = endPoints.fetchMovie(movie.id);
 			const { data } = await api.get(endPoint);
@@ -59,6 +64,7 @@ function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 				: toastMessages.success("All set for you trailer, enjoy!");
 
 			setTrailerUrl(data.results[0].key);
+			setMovieSelectedId(movie.id);
 
 			return;
 		} catch (e) {
@@ -68,6 +74,7 @@ function Row({ id, title, fetchUrl, isLargeRow }: RowProps) {
 
 	const handleCloseTrailer = () => {
 		setTrailerUrl("");
+		setMovieSelectedId(0);
 	};
 
 	const handleSlideMovies = (option: string) => {

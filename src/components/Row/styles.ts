@@ -73,6 +73,7 @@ export const RowScrollable = styled.div`
 	}
 
 	.row__poster {
+		cursor: pointer;
 		object-fit: contain;
 		width: 100%;
 		max-height: 100px;

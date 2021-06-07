@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import styled from "styled-components";
 
 interface BannerProps {
@@ -7,8 +6,8 @@ interface BannerProps {
 
 export const HeaderBanner = styled.header<BannerProps>`
 	background-image: url(${(props) => props.image});
-	background-size: "cover";
-	background-position: "center center";
+	background-size: cover;
+	background-position: center center;
 	color: #fff;
 	object-fit: contain;
 	height: 448px;

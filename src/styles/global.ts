@@ -6,11 +6,8 @@ export const GlobalStyle = createGlobalStyle`
 	margin: 0;
 }
 
-.app {
-	background: #111;
-}
-
 body {
+	background: #111;
 	font-family: 'Martel Sans', sans-serif;
 }
 `;

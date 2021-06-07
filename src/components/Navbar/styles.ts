@@ -16,6 +16,19 @@ export const NavContainer = styled.nav<NavContainerProps>`
 	transition: all 0.5s;
 	background-color: ${(props) => props.showFade && "#111"};
 
+	img {
+		cursor: pointer;
+	}
+
+	.nav__logo--home {
+		top: 1rem;
+		left: 4.5rem;
+		position: fixed;
+		transform: scale(2.2);
+		width: 80px;
+		object-fit: contain;
+	}
+
 	.nav__logo {
 		position: fixed;
 		top: 10px;
