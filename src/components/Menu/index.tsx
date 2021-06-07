@@ -1,11 +1,16 @@
 import { useAuth } from "../../context";
 import { MenuContainer } from "./styles";
 
-function Menu() {
+interface MenuProps {
+	mouseEnter: () => void;
+	mouseLeave: () => void;
+}
+
+function Menu({ mouseEnter, mouseLeave }: MenuProps) {
 	const { signOut } = useAuth();
 
 	return (
-		<MenuContainer>
+		<MenuContainer onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
 			<span onClick={signOut}>Sair</span>
 		</MenuContainer>
 	);

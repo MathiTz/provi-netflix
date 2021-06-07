@@ -38,9 +38,11 @@ export const NavContainer = styled.nav<NavContainerProps>`
 	}
 
 	.nav__avatar {
+		padding: 20px;
 		border-radius: 5px;
 		position: fixed;
-		right: 20px;
+		top: 5px;
+		right: 0;
 		width: 30px;
 		object-fit: contain;
 	}

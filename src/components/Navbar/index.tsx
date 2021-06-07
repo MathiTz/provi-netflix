@@ -14,8 +14,17 @@ function Navbar() {
 		});
 	}, []);
 
-	const handleToggleMenu = () => {
-		setHandleShowMenu(!showMenu);
+	const handleToggleMenu = (option: string) => {
+		switch (option) {
+			case "enter":
+				setHandleShowMenu(true);
+				return;
+			case "leave":
+				setHandleShowMenu(false);
+				return;
+			default:
+				return;
+		}
 	};
 
 	return (
@@ -27,15 +36,20 @@ function Navbar() {
 			/>
 			{user && (
 				<img
-					onMouseEnter={handleToggleMenu}
-					onMouseLeave={handleToggleMenu}
+					onMouseEnter={() => handleToggleMenu("enter")}
+					onMouseLeave={() => handleToggleMenu("leave")}
 					className="nav__avatar"
 					src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
 					alt="Netflix Avatar"
 				/>
 			)}
 
-			{showMenu && <Menu />}
+			{showMenu && (
+				<Menu
+					mouseEnter={() => handleToggleMenu("enter")}
+					mouseLeave={() => handleToggleMenu("leave")}
+				/>
+			)}
 		</NavContainer>
 	);
 }

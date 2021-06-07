@@ -42,7 +42,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 	});
 
 	const logIn = useCallback(
-		async ({ email, password }) => {
+		async ({ email, password }: CredentialsProps) => {
 			const usersCollection = db.collection("users");
 			const hashedPassword = btoa(password);
 			const user = await usersCollection.where("email", "==", email).get();
@@ -54,6 +54,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 			const userId = user.docs[0].id;
 			const { passwordHashed } = user.docs[0].data();
 			if (passwordHashed === hashedPassword) {
+				localStorage.setItem("@proviTest:user", JSON.stringify(user));
 				setData({ user: { email, id: userId } });
 			} else {
 				throw new Error("Email/Password incorrect");
@@ -63,7 +64,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 	);
 
 	const signUp = useCallback(
-		async ({ email, password }) => {
+		async ({ email, password }: CredentialsProps) => {
 			const usersCollection = db.collection("users");
 			const hashedPassword = btoa(password);
 			const userExists = await usersCollection
@@ -79,7 +80,14 @@ function AuthProvider({ children }: AuthProviderProps) {
 				passwordHashed: hashedPassword,
 			});
 
-			setData({ user: { email, id: res.id } });
+			const user = {
+				email,
+				id: res.id,
+			};
+
+			localStorage.setItem("@proviTest:user", JSON.stringify(user));
+
+			setData({ user });
 		},
 		[db]
 	);
