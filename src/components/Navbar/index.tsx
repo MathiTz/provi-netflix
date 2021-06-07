@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context";
+import { useAuth } from "../../hook";
 import { Menu } from "../Menu";
 import { NavContainer } from "./styles";
 

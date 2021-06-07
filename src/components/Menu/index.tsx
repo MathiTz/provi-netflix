@@ -1,4 +1,4 @@
-import { useAuth } from "../../context";
+import { useAuth } from "../../hook";
 import { MenuContainer } from "./styles";
 
 interface MenuProps {

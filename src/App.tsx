@@ -6,7 +6,7 @@ import { Routes } from "./routes";
 
 /** CSS IMPORTS */
 import "react-toastify/dist/ReactToastify.css";
-import { AuthProvider } from "./context";
+import { AuthProvider } from "./hook";
 
 function App() {
 	return (

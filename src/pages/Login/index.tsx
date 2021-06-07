@@ -3,7 +3,7 @@ import { Navbar } from "../../components/Navbar";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { FadeBottom, FormInput, FormContainer, LoginContainer } from "./styles";
-import { useAuth } from "../../context";
+import { useAuth } from "../../hook";
 import { toastMessages } from "../../utils";
 import { Loader } from "../../components/Loading";
 
@@ -66,11 +66,11 @@ function Login() {
 			<FormContainer>
 				{isLoginVisible ? (
 					<FormInput onSubmit={handleSubmit(onSubmit)}>
-						<h1>Entrar</h1>
+						<h1>Login</h1>
 
 						<input
 							type="email"
-							placeholder="Email"
+							placeholder="E-mail"
 							{...register("email", { required: true })}
 						/>
 						{errors.email?.type === "required" && (
@@ -86,7 +86,9 @@ function Login() {
 							<p className="errors__form">Senha é requerido</p>
 						)}
 
-						<button type="submit">{loading ? <Loader /> : "Entrar"}</button>
+						<button datatest-id="button-login" type="submit">
+							{loading ? <Loader /> : "Entrar"}
+						</button>
 
 						<p
 							className="text__form--toggle"
