@@ -1,0 +1,23 @@
+[debug] [2022-01-16T23:22:55.848Z] ----------------------------------------------------------------------
+[debug] [2022-01-16T23:22:55.849Z] Command:       /usr/local/bin/firebase /home/matheus/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-01-16T23:22:55.849Z] CLI Version:   10.1.0
+[debug] [2022-01-16T23:22:55.849Z] Platform:      linux
+[debug] [2022-01-16T23:22:55.849Z] Node Version:  v12.18.1
+[debug] [2022-01-16T23:22:55.850Z] Time:          Sun Jan 16 2022 20:22:55 GMT-0300 (Brasilia Standard Time)
+[debug] [2022-01-16T23:22:55.850Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-16T23:22:55.886Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-16T23:22:55.887Z] > authorizing via signed-in user (matheusalves789@gmail.com)
+[debug] [2022-01-16T23:22:55.887Z] [iam] checking project provi-netflix-test for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-01-16T23:22:55.888Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-01-16T23:22:55.888Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-16T23:22:56.540Z] <<< HTTP RESPONSE 200 {"date":"Sun, 16 Jan 2022 23:22:56 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-16T23:22:57.732Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/provi-netflix-test:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-01-16T23:23:03.789Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 16 Jan 2022 23:23:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=721","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-16T23:23:03.793Z] > refreshing access token with scopes: []
+[debug] [2022-01-16T23:23:03.793Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-16T23:23:04.212Z] <<< HTTP RESPONSE 200 {"date":"Sun, 16 Jan 2022 23:23:04 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-16T23:23:05.420Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/provi-netflix-test [none]
