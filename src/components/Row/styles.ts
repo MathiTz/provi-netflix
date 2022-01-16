@@ -63,7 +63,7 @@ export const RowMoviesContainer = styled.main`
 export const RowScrollable = styled.div`
 	display: flex;
 	overflow-y: hidden;
-	overflow-x: scroll;
+	overflow-x: hidden;
 	padding: 20px;
 	transition: 0.45s all;
 	scroll-behavior: smooth;
@@ -75,8 +75,7 @@ export const RowScrollable = styled.div`
 	.row__poster {
 		cursor: pointer;
 		object-fit: contain;
-		width: 100%;
-		max-height: 100px;
+		width: 10rem;
 		margin-right: 15px;
 		padding: 0 10px;
 		transition: transform 450ms;
